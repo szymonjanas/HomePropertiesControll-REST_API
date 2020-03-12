@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div th:fragment="navbar">
+        <nav>
+            <link rel="stylesheet" type="text/css" href="styles/header.css">
+            <ul class="navigationBar">
+                <li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}"><a href="/">Home</a></li>
+                <li th:classappend="${#httpServletRequest.getRequestURI() == '/admin' ? 'active':''}"><a href="/admin">Admin</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

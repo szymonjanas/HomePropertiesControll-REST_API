@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Sensors List</title>
+
+    <script type="text/javascript" th:src="@{/scripts/admin.js}"></script>
+    <link rel="stylesheet" type="text/css" href="styles/admin.css">
+</head>
+<body>
+    <div th:replace="header :: navbar"></div>
+
+<table id="sensorsTable">
+    <td class="tableNamesLong">UUID</td>
+    <td class="tableNames">Name</td>
+    <td class="tableNames">Type</td>
+    <td class="tableNames">Location</td>
+    <td class="tableNamesShort">State</td>
+    <td class="tableNamesShort">Level</td>
+    <td class="tableNames"></td>
+    <tr th:each="sensor : ${sensors}">
+        <td th:text = " ${sensor.id} "/>
+        <td th:text = " ${sensor.name} "/>
+        <td th:text = " ${sensor.type} "/>
+        <td th:text = " ${sensor.location} "/>
+        <td class="state" th:text = " ${sensor.state} "/>
+        <td th:text = " ${sensor.level} "/>
+        
+        <script th:inline="javascript">
+            var length = document.getElementsByClassName("state").length;
+            var list = document.getElementsByClassName("state");
+            if (list[length-1].textContent == "true")
+            {
+                list[length-1].setAttribute("style", "color: green;")
+            } else {
+                list[length-1].setAttribute("style", "color: red;");
+            }
+        </script>
+        <td class="btnInputDeleteTable"> 
+            <form th:action="@{admin/sensor/delete}" method="post"  onsubmit="return confirm('Are you sure?');">
+                <input type="hidden" name="id" th:value="${sensor.id}" />
+                <input  type="submit" value="Delete" class="btnInputDelete" />
+            </form>
+        </td>
+    </tr>
+</table>
+
+<button class="collapsible">Add sensor</button>
+<div class="content">
+    <form action="#" th:action="@{admin/sensor/add}" th:object="${sensor}" method="post">
+        <label class="ilabel" for="iname">Name:</label>
+            <input id="iname" type="text"      th:field="*{name}" placeholder="Name..."/>
+        <label class="ilabel" for="itype">Type:</label>
+            <input id="itype" type="text"      th:field="*{type}" placeholder="Type..."/>
+        <label class="ilabel" for="ilocation">Location:</label>
+            <input id="ilocation" type="text"  th:field="*{location}" placeholder="Location..."/>
+            <p> <input class="ibtn" type="submit" value="ADD"/> <input class="ibtn" type="reset" value="CLEAR"/></p>
+    </form>
+</div>
+
+<table id="usersTable">
+    <td class="tableNamesLong">Username</td>
+    <td class="tableNames">Password</td>
+    <td class="tableNames">Role</td>
+    <td class="tableNames"></td>
+    <tr th:each="user : ${users}">
+        <td th:text = " ${user.username} "/>
+        <td th:text = " ${user.password} "/>
+        <td th:text = " ${user.role} "/>
+        <td class="btnInputDeleteTable"> 
+            <form th:action="@{admin/user/delete}" method="post"  onsubmit="return confirm('Are you sure?');">
+                <input type="hidden" name="username" th:value="${user.username}" />
+                <input  type="submit" value="Delete" class="btnInputDelete" />
+            </form>
+        </td>
+    </tr>
+</table>
+
+<button class="collapsible">Add user</button>
+<div class="content">
+    <form action="#" th:action="@{admin/user/add}" th:object="${user}" method="post">
+        <label class="ilabel" for="iusername">Username:</label>
+            <input id="iusername" type="text"      th:field="*{username}" placeholder="Username..."/>
+        <label class="ilabel" for="ipassword">Password:</label>
+            <input id="ipassword" type="text"      th:field="*{password}" placeholder="Password..."/>
+        <label class="ilabel" for="irole">Role (ADMIN, ANDROID, SENSOR):</label>
+            <input id="irole" type="text"  th:field="*{role}" placeholder="Role..."/>
+            <p> <input class="ibtn" type="submit" value="ADD"/> <input class="ibtn" type="reset" value="CLEAR"/></p>
+    </form>
+</div>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+        content.style.maxHeight = null;
+        } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        } 
+    });
+    }
+</script>
+
+</body>
+
+</html>

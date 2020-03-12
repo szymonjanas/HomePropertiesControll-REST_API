@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Sensor Add</title>
+</head>
+<body>
+    <h1>New Sensor</h1>
+    <form action="#" th:action="@{/admin/add}" th:object="${sensor}" method="post">
+        <p> Name:       <input type="text"      th:field="*{name}"/></p>
+        <p> Type:       <input type="text"      th:field="*{type}"/></p>
+        <p> Location:   <input type="text"      th:field="*{location}"/></p>
+        <p> <input type="submit" value="ADD"/> <input type="reset" value="CLEAR"/></p>
+    </form>
+</body>
+
+<button type="submit" onclick="window.location.href ='/admin'">Back</button>
+</html>

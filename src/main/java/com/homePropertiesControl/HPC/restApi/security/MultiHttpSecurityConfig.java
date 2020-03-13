@@ -2,6 +2,7 @@ package com.homePropertiesControl.HPC.restApi.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,6 +19,7 @@ public class MultiHttpSecurityConfig {
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
             http
+                    .csrf().disable()
                     .antMatcher("/api/**")
                     .authorizeRequests(authorize -> authorize
                             .anyRequest().authenticated()

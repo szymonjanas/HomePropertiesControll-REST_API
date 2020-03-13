@@ -2,6 +2,7 @@ package com.homePropertiesControl.HPC.restApi.model;
 
 import org.json.JSONObject;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Iterator;
@@ -12,6 +13,7 @@ public class Complains {
     @Id
     private String id;
     private String type;
+    @Column(columnDefinition = "LONGTEXT")
     private String content;
 
     public Complains() {}

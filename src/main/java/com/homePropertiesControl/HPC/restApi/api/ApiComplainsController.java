@@ -26,7 +26,7 @@ public class ApiComplainsController {
         complainsRepository.save(new Complains( id,
                                                 jsonObject.getString("type"),
                                                 jsonObject.getString("message") ));
-        response.put("message", "ok");
+        response.put("message", "Message recived correctly!\nThank you for your time!");
         return response.toString();
     }
 

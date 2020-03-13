@@ -4,24 +4,24 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Mtod {
+public class Motd {
 
     @Id
-    private String id;
+    private Integer id;
     private String message;
 
-    public Mtod() {}
+    public Motd() {}
 
-    public Mtod(String id, String message) {
+    public Motd(Integer id, String message) {
         this.id = id;
         this.message = message;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

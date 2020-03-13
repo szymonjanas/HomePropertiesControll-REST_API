@@ -2,6 +2,7 @@ package com.homePropertiesControl.HPC.restApi.api;
 
 import com.homePropertiesControl.HPC.restApi.Repository.SensorsRepository;
 import com.homePropertiesControl.HPC.restApi.model.Sensor;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +27,14 @@ public class ApiAndroidController {
         return "TRUE";
     }
 
-    @PutMapping(path = "/{command}/**")
+    @PutMapping(path = "/{command}")
     @PreAuthorize("hasAnyRole('ROLE_ANDROID')")
-    public String changeSensor(@PathVariable("command") String command, @RequestBody final Sensor sensor) {
+    public String changeSensor(@PathVariable("command") String command, @RequestBody String sensorStr) {
+
+        JSONObject jsonObject = new JSONObject(sensorStr);
+        Sensor sensor = new Sensor(jsonObject);
+
+        JSONObject response = new JSONObject();
         if (sensorsRepository.findById(sensor.getId()).isPresent()){
             Sensor tsensor = sensorsRepository.findById(sensor.getId()).get();
             switch (command) {
@@ -44,12 +50,18 @@ public class ApiAndroidController {
                 case "location":
                     tsensor.setLocation(sensor.getLocation());
                     break;
+                case "state":
+                    tsensor.setState(sensor.getState());
+                    break;
                 default:
-                    return "FALSE";
+                    response.put("message", "Command not found!");
+                    return response.toString();
             }
             sensorsRepository.save(tsensor);
-            return "TRUE";
+            response.put("message", "ok");
+            return response.toString();
         }
-        return "FALSE";
+        response.put("message", "Sensor with given id not found!");
+        return response.toString();
     }
 }

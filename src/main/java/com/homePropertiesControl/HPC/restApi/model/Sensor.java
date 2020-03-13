@@ -1,8 +1,11 @@
 package com.homePropertiesControl.HPC.restApi.model;
 
 import com.fasterxml.uuid.Generators;
+import org.json.JSONObject;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Iterator;
 
 @Entity
 public class Sensor {
@@ -12,37 +15,73 @@ public class Sensor {
     private String name;
     private String type;
     private String location;
+
     private boolean state;
     private int level;
 
     public Sensor() {}
+
     public Sensor(String id,
                   String name,
                   String type,
                   String location,
-                  int level) {
+                  int level,
+                  boolean state) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.location = location;
-        setLevel(level);
+        this.level = level;
+        this.state = state;
     }
 
     public Sensor(String name,
                   String type,
-                  String location) {
+                  String location,
+                  int level,
+                  boolean state) {
 
         this.id = Generators.randomBasedGenerator().generate().toString();
         this.name = name;
         this.type = type;
         this.location = location;
-        setLevel(0);
+        this.level = level;
+        this.state = state;
+    }
+
+    public Sensor(JSONObject jsonObject){
+        Iterator iter = jsonObject.keys();
+        while(iter.hasNext()){
+            String key = (String) iter.next();
+            switch (key){
+                case "id":
+                    this.id =  (String) jsonObject.get(key);
+                    break;
+                case "name":
+                    this.name = (String) jsonObject.get(key);
+                    break;
+                case "type":
+                    this.type = (String) jsonObject.get(key);
+                    break;
+                case "location":
+                    this.location = (String) jsonObject.get(key);
+                    break;
+                case "level":
+                    this.level = (int) jsonObject.get(key);
+                    break;
+                case "state":
+                    this.state = (boolean) jsonObject.get(key);
+                    break;
+            }
+        }
+
     }
 
     public void setLevel(int level) {
-        this.state = level != 0;
         this.level = level;
     }
+
+    public void setId(String id){ this.id = id;}
 
     public String getId() {
         return id;
@@ -70,6 +109,10 @@ public class Sensor {
 
     public boolean getState() {
         return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 
     public void setName(String name) {

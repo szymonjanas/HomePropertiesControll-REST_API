@@ -24,7 +24,6 @@ public class ApiMotdController {
         for (Motd motd:iterList){
             listOfIds.add(motd.getId());
         }
-
         int random = new Random().nextInt((int) listOfIds.size() - 1);
         int value = listOfIds.get(random);
          if(motdRepository.findById(value).isPresent()){

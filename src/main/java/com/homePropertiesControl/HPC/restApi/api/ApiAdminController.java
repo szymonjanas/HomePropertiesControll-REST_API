@@ -36,7 +36,7 @@ public class ApiAdminController {
         @PostMapping("/sensor/add")
         @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
         public ModelAndView addSensorForm(@ModelAttribute("sensor") Sensor sensor) {
-            sensorsRepository.save(new Sensor(sensor.getName(), sensor.getType(), sensor.getLocation()));
+            sensorsRepository.save(new Sensor(sensor.getName(), sensor.getType(), sensor.getLocation(), sensor.getLevel(), sensor.getState()));
             return new ModelAndView("redirect:/admin");
         }
 

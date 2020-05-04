@@ -11,13 +11,13 @@ import java.util.Iterator;
 public class Sensor {
 
     @Id
-    private String id;
-    private String name;
-    private String type;
-    private String location;
+    private String id = null;
+    private String name = null;
+    private String type = null;
+    private String location = null;
 
-    private boolean state;
-    private int level;
+    private boolean state = false;
+    private int level = -1;
 
     public Sensor() {}
 

@@ -10,6 +10,8 @@
 <body>
     <div th:replace="header :: navbar"></div>
 
+<!--    SENSORS       -->
+
 <table id="sensorsTable">
     <td class="tableNamesLong">UUID</td>
     <td class="tableNames">Name</td>
@@ -17,6 +19,7 @@
     <td class="tableNames">Location</td>
     <td class="tableNamesShort">State</td>
     <td class="tableNamesShort">Level</td>
+    <td class="tableNames"></td>
     <td class="tableNames"></td>
     <tr th:each="sensor : ${sensors}">
         <td th:text = " ${sensor.id} "/>
@@ -42,6 +45,12 @@
                 <input  type="submit" value="Delete" class="btnInputDelete" />
             </form>
         </td>
+        <td class="btnInputDeleteTable">
+            <form th:action="@{admin/sensor/changeState}" method="post"  onsubmit="return confirm('Are you sure?');">
+                <input type="hidden" name="id" th:value="${sensor.id}" />
+                <input  type="submit" value="OnOff" class="btnInputDelete" />
+            </form>
+        </td>
     </tr>
 </table>
 
@@ -61,6 +70,27 @@
             <p> <input class="ibtn" type="submit" value="ADD"/> <input class="ibtn" type="reset" value="CLEAR"/></p>
     </form>
 </div>
+
+<button class="collapsible">Add sensor with ID</button>
+<div class="content">
+    <form action="#" th:action="@{admin/sensor/addwid}" th:object="${sensorid}" method="post">
+        <label class="ilabel" for="iid">Name:</label>
+        <input id="iid" type="text"      th:field="*{id}" placeholder="UUID..."/>
+        <label class="ilabel" for="iname">Name:</label>
+        <input id="iname" type="text"      th:field="*{name}" placeholder="Name..."/>
+        <label class="ilabel" for="itype">Type:</label>
+        <input id="itype" type="text"      th:field="*{type}" placeholder="Type..."/>
+        <label class="ilabel" for="ilocation">Location:</label>
+        <input id="ilocation" type="text"  th:field="*{location}" placeholder="Location..."/>
+        <label class="ilabel" for="ilevel">Level:</label>
+        <input id="ilevel" type="text"  th:field="*{level}" placeholder="Level..."/>
+        <label class="ilabel" for="istate">State:</label>
+        <input id="istate" type="text"  th:field="*{state}" placeholder="State..."/>
+        <p> <input class="ibtn" type="submit" value="ADD"/> <input class="ibtn" type="reset" value="CLEAR"/></p>
+    </form>
+</div>
+
+<!--    USERS     -->
 
 <table id="usersTable">
     <td class="tableNamesLong">Username</td>
@@ -92,6 +122,54 @@
             <p> <input class="ibtn" type="submit" value="ADD"/> <input class="ibtn" type="reset" value="CLEAR"/></p>
     </form>
 </div>
+
+<!--    COMPLAINS     -->
+
+<table id="complainsTable">
+    <td class="tableNames">Id</td>
+    <td class="tableNames">Type</td>
+    <td class="tableNamesLong">Message</td>
+    <td class="tableNames"></td>
+    <tr th:each="complain : ${complains}">
+        <td th:text = " ${complain.id} "/>
+        <td th:text = " ${complain.type} "/>
+        <td th:text = " ${complain.content} "/>
+        <td class="btnInputDeleteTable">
+            <form th:action="@{admin/complain/delete}" method="post"  onsubmit="return confirm('Are you sure?');">
+                <input type="hidden" name="id" th:value="${complain.id}" />
+                <input  type="submit" value="Delete" class="btnInputDelete" />
+            </form>
+        </td>
+    </tr>
+</table>
+
+<!--    MOTD     -->
+
+<table id="motdTable">
+    <td class="tableNames">Id</td>
+    <td class="tableNamesLong">Messge</td>
+    <td class="tableNames"></td>
+    <tr th:each="motd : ${motds}">
+        <td th:text = " ${motd.id} "/>
+        <td th:text = " ${motd.message} "/>
+        <td class="btnInputDeleteTable">
+            <form th:action="@{admin/motd/delete}" method="post"  onsubmit="return confirm('Are you sure?');">
+                <input type="hidden" name="id" th:value="${motd.id}" />
+                <input  type="submit" value="Delete" class="btnInputDelete" />
+            </form>
+        </td>
+    </tr>
+</table>
+
+<button class="collapsible">Add message of the day:</button>
+<div class="content">
+    <form action="#" th:action="@{admin/motd/add}" th:object="${motd}" method="post">
+        <label class="ilabel" for="imessage">Message:</label>
+        <input id="imessage" type="text"      th:field="*{message}" placeholder="Message..."/>
+        <p> <input class="ibtn" type="submit" value="ADD"/> <input class="ibtn" type="reset" value="CLEAR"/></p>
+    </form>
+</div>
+
 
 <script>
     var coll = document.getElementsByClassName("collapsible");

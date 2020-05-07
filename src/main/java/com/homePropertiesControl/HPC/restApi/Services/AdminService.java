@@ -5,11 +5,12 @@ import com.homePropertiesControl.HPC.restApi.Repository.MotdRepository;
 import com.homePropertiesControl.HPC.restApi.Repository.SensorsRepository;
 import com.homePropertiesControl.HPC.restApi.Repository.UsersRepository;
 import com.homePropertiesControl.HPC.restApi.auth.ApplicationUser;
-import com.homePropertiesControl.HPC.restApi.model.Complains;
 import com.homePropertiesControl.HPC.restApi.model.Motd;
 import com.homePropertiesControl.HPC.restApi.model.Sensor;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+@Service
 public class AdminService {
 
     private final SensorsRepository sensorsRepository;
@@ -36,7 +37,7 @@ public class AdminService {
         model.addAttribute("users", usersRepository.findAll());
         model.addAttribute("motds", motdRepository.findAll());
         model.addAttribute("sensors", sensorsRepository.findAll());
-        model.addAttribute("complains", complainsRepository.findAll(););
+        model.addAttribute("complains", complainsRepository.findAll());
     }
 
     public void postSensor(Sensor sensor){

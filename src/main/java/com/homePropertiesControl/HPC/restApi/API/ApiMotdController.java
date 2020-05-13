@@ -1,7 +1,7 @@
-package com.homePropertiesControl.HPC.restApi.api;
+package com.homePropertiesControl.HPC.restApi.API;
 
 import com.homePropertiesControl.HPC.restApi.Repository.MotdRepository;
-import com.homePropertiesControl.HPC.restApi.model.Motd;
+import com.homePropertiesControl.HPC.restApi.Models.Motd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

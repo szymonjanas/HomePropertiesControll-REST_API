@@ -1,13 +1,12 @@
-package com.homePropertiesControl.HPC.restApi.security;
+package com.homePropertiesControl.HPC.restApi.Security;
 
 import com.google.common.collect.Sets;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.homePropertiesControl.HPC.restApi.security.ApplicationUserPermission.*;
+import static com.homePropertiesControl.HPC.restApi.Security.ApplicationUserPermission.*;
 
 public enum ApplicationUserRole {
     SENSOR(Sets.newHashSet(SENSOR_READ, SENSOR_WRITE)),

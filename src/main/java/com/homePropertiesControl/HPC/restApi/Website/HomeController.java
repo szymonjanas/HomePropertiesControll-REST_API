@@ -1,4 +1,4 @@
-package com.homePropertiesControl.HPC.restApi.api;
+package com.homePropertiesControl.HPC.restApi.Website;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

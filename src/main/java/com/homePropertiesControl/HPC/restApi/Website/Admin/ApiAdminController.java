@@ -1,9 +1,9 @@
-package com.homePropertiesControl.HPC.restApi.api;
+package com.homePropertiesControl.HPC.restApi.Website.Admin;
 
 import com.homePropertiesControl.HPC.restApi.Services.AdminService;
-import com.homePropertiesControl.HPC.restApi.auth.ApplicationUser;
-import com.homePropertiesControl.HPC.restApi.model.Motd;
-import com.homePropertiesControl.HPC.restApi.model.Sensor;
+import com.homePropertiesControl.HPC.restApi.Authorization.ApplicationUser;
+import com.homePropertiesControl.HPC.restApi.Models.Motd;
+import com.homePropertiesControl.HPC.restApi.Models.Sensor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

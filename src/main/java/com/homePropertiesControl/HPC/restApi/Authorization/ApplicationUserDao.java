@@ -1,4 +1,4 @@
-package com.homePropertiesControl.HPC.restApi.auth;
+package com.homePropertiesControl.HPC.restApi.Authorization;
 
 import java.util.Optional;
 

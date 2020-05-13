@@ -1,4 +1,4 @@
-package com.homePropertiesControl.HPC.restApi.model;
+package com.homePropertiesControl.HPC.restApi.Models;
 
 import org.json.JSONObject;
 

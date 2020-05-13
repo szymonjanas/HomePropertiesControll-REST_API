@@ -1,4 +1,4 @@
-package com.homePropertiesControl.HPC.restApi.auth;
+package com.homePropertiesControl.HPC.restApi.Authorization;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

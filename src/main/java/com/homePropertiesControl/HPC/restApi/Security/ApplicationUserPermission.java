@@ -1,4 +1,4 @@
-package com.homePropertiesControl.HPC.restApi.security;
+package com.homePropertiesControl.HPC.restApi.Security;
 
 public enum ApplicationUserPermission {
     SENSOR_READ("sensor:read"),

@@ -1,7 +1,7 @@
-package com.homePropertiesControl.HPC.restApi.api;
+package com.homePropertiesControl.HPC.restApi.API;
 
 import com.homePropertiesControl.HPC.restApi.Repository.ComplainsRepository;
-import com.homePropertiesControl.HPC.restApi.model.Complains;
+import com.homePropertiesControl.HPC.restApi.Models.Complains;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;

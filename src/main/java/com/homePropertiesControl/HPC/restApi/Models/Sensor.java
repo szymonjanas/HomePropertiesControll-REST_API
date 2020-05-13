@@ -1,4 +1,4 @@
-package com.homePropertiesControl.HPC.restApi.model;
+package com.homePropertiesControl.HPC.restApi.Models;
 
 import com.fasterxml.uuid.Generators;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import java.util.Iterator;
 public class Sensor {
 
     @Id
-    private String id = null;
+    private String id = "";
     private String name = null;
     private String type = null;
     private String location = null;
@@ -35,18 +35,16 @@ public class Sensor {
         this.state = state;
     }
 
-    public Sensor(String name,
-                  String type,
-                  String location,
-                  int level,
-                  boolean state) {
-
-        this.id = Generators.randomBasedGenerator().generate().toString();
-        this.name = name;
-        this.type = type;
-        this.location = location;
-        this.level = level;
-        this.state = state;
+    public Sensor(Sensor sensor) {
+        if (sensor.getId().length() == 0)
+            this.id = Generators.randomBasedGenerator().generate().toString();
+        else
+            this.id = sensor.getId();
+        this.name = sensor.getName();
+        this.type = sensor.getType();
+        this.location = sensor.getLocation();
+        this.level = sensor.getLevel();
+        this.state = sensor.getState();
     }
 
     public Sensor(JSONObject jsonObject){

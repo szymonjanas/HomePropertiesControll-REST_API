@@ -1,7 +1,7 @@
 package com.homePropertiesControl.HPC.restApi.Services;
 
 import com.homePropertiesControl.HPC.restApi.Repository.SensorsRepository;
-import com.homePropertiesControl.HPC.restApi.model.Sensor;
+import com.homePropertiesControl.HPC.restApi.Models.Sensor;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 

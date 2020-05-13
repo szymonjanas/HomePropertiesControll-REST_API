@@ -1,8 +1,7 @@
-package com.homePropertiesControl.HPC.restApi.api;
+package com.homePropertiesControl.HPC.restApi.API;
 
 import com.homePropertiesControl.HPC.restApi.Services.AndroidService;
-import com.homePropertiesControl.HPC.restApi.model.Sensor;
-import org.json.JSONObject;
+import com.homePropertiesControl.HPC.restApi.Models.Sensor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 

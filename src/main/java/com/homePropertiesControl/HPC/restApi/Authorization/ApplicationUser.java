@@ -1,4 +1,4 @@
-package com.homePropertiesControl.HPC.restApi.auth;
+package com.homePropertiesControl.HPC.restApi.Authorization;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -41,12 +41,10 @@ public class ApplicationUser implements UserDetails {
         this.isEnabled = isEnabled;
     }
 
-    public ApplicationUser(String username,
-                           String password,
-                           String role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
+    public ApplicationUser(ApplicationUser user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.role = user.getRole();
         this.isAccountNonExpired = true;
         this.isAccountNonLocked = true;
         this.isCredentialsNonExpired = true;

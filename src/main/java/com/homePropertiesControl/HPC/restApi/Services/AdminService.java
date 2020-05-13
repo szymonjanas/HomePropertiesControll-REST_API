@@ -4,7 +4,7 @@ import com.homePropertiesControl.HPC.restApi.Repository.ComplainsRepository;
 import com.homePropertiesControl.HPC.restApi.Repository.MotdRepository;
 import com.homePropertiesControl.HPC.restApi.Repository.SensorsRepository;
 import com.homePropertiesControl.HPC.restApi.Repository.UsersRepository;
-import com.homePropertiesControl.HPC.restApi.Authorization.ApplicationUser;
+import com.homePropertiesControl.HPC.restApi.Models.ApplicationUser;
 import com.homePropertiesControl.HPC.restApi.Models.Motd;
 import com.homePropertiesControl.HPC.restApi.Models.Sensor;
 import org.springframework.stereotype.Service;

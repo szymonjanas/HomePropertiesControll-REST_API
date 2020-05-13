@@ -1,7 +1,7 @@
 package com.homePropertiesControl.HPC.restApi.Website.Admin;
 
 import com.homePropertiesControl.HPC.restApi.Services.AdminService;
-import com.homePropertiesControl.HPC.restApi.Authorization.ApplicationUser;
+import com.homePropertiesControl.HPC.restApi.Models.ApplicationUser;
 import com.homePropertiesControl.HPC.restApi.Models.Motd;
 import com.homePropertiesControl.HPC.restApi.Models.Sensor;
 import org.springframework.security.access.prepost.PreAuthorize;

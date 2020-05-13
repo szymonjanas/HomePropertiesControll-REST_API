@@ -1,7 +1,6 @@
 package com.homePropertiesControl.HPC.restApi.API;
 
 import com.homePropertiesControl.HPC.restApi.Repository.SensorsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +11,11 @@ import java.util.UUID;
 @RequestMapping("/api/sensor")
 public class ApiSensorController {
 
-    @Autowired
-    private SensorsRepository sensorsRepository;
+    private final SensorsRepository sensorsRepository;
+
+    public ApiSensorController(SensorsRepository sensorsRepository) {
+        this.sensorsRepository = sensorsRepository;
+    }
 
     @GetMapping("/state")
     @PreAuthorize("hasAnyRole('ROLE_SENSOR')")

@@ -1,4 +1,4 @@
-package com.homePropertiesControl.HPC.restApi.Authorization;
+package com.homePropertiesControl.HPC.restApi.Models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

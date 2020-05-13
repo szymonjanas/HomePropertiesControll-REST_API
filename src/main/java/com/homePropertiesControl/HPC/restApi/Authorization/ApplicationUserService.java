@@ -1,6 +1,6 @@
 package com.homePropertiesControl.HPC.restApi.Authorization;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.homePropertiesControl.HPC.restApi.Models.ApplicationUser;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,7 +14,6 @@ public class ApplicationUserService implements UserDetailsService {
     private final ApplicationUserDao applicationUserDao;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
     public ApplicationUserService(@Qualifier("mysql-db") ApplicationUserDao applicationUserDao, PasswordEncoder passwordEncoder) {
         this.applicationUserDao = applicationUserDao;
         this.passwordEncoder = passwordEncoder;
